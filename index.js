@@ -16,7 +16,10 @@ const mediaStreamConstraints = {
 };
 
 document.getElementById('start').onclick = function() {
-    console.log(navigator.mediaDevices.getSupportedConstraints())
+  navigator.mediaDevices
+  .getDisplayMedia(mediaStreamConstraints)
+  .then(gotLocalMediaStream)
+  .catch(handleLocalMediaStreamError);
 }
 
 const localVideo = document.querySelector("video");
@@ -29,31 +32,3 @@ function gotLocalMediaStream(mediaStream) {
 function handleLocalMediaStreamError(error) {
   console.log("navigator.getUserMedia error: ", error);
 }
-
-document.getElementById('make-call').onclick = () => {
-  const theirID = document.getElementById('their-id').value;
-  const mediaConnection = peer.call(theirID, localStream);
-  setEventListener(mediaConnection);
-};
-
-// イベントリスナを設置する関数
-const setEventListener = mediaConnection => {
-  mediaConnection.on('stream', stream => {
-    // video要素にカメラ映像をセットして再生
-    const videoElm = document.getElementById('their-video')
-    videoElm.srcObject = stream;
-    videoElm.play();
-  });
-}
-
-//着信処理
-peer.on('call', mediaConnection => {
-  mediaConnection.answer(localStream);
-  setEventListener(mediaConnection);
-});
-
-navigator.mediaDevices
-  .getDisplayMedia(mediaStreamConstraints)
-  .then(gotLocalMediaStream)
-  .catch(handleLocalMediaStreamError);
-
