@@ -33,7 +33,7 @@ function gotLocalMediaStream(mediaStream) {
 }
 
 peer.on('call', mediaConnection => {
-  mediaConnection.answer(localStream, {videoBandwidth: 1400, audioBandwidth: 400});
+  mediaConnection.answer(localStream, {videoBandwidth: 14000, audioBandwidth: 4000});
   setEventListener(mediaConnection);
 });
 
