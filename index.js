@@ -9,7 +9,6 @@ peer.on('open', () => {
   document.getElementById('my-id').textContent = peer.id;
 });
 
-
 const mediaStreamConstraints = {
   audio: true,
   video: {"frameRate": {"max": 60}} 
@@ -22,12 +21,21 @@ document.getElementById('start').onclick = function() {
   .catch(handleLocalMediaStreamError);
 }
 
+document.getElementById('url').onclick = function() {
+  navigator.clipboard.writeText("http://150.147.198.206/screen?id="+peer.id);
+}
+
 const localVideo = document.querySelector("video");
 
 function gotLocalMediaStream(mediaStream) {
   localStream = mediaStream;
   localVideo.srcObject = mediaStream;
 }
+
+peer.on('call', mediaConnection => {
+  mediaConnection.answer(localStream, {videoBandwidth: 1400, audioBandwidth: 400});
+  setEventListener(mediaConnection);
+});
 
 function handleLocalMediaStreamError(error) {
   console.log("navigator.getUserMedia error: ", error);
