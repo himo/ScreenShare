@@ -11,7 +11,9 @@ peer.on('open', () => {
 
 const mediaStreamConstraints = {
   audio: {
-        noiseSuppression: false
+        noiseSuppression: false,
+        autoGainControl: false,
+        channelCount: 2
   },
   video: {"frameRate": {"max": 60}} 
 };
