@@ -1,9 +1,6 @@
 "user strict";
 let localStream;
-const peer = new Peer({
-  key: 'c2ad39ff-ed02-41e1-b1f1-c918871c1f28',
-  debug: 3
-});
+var peer;
 
 peer.on('open', () => {
   document.getElementById('my-id').textContent = peer.id;
@@ -23,6 +20,18 @@ document.getElementById('start').onclick = function() {
   .getDisplayMedia(mediaStreamConstraints)
   .then(gotLocalMediaStream)
   .catch(handleLocalMediaStreamError);
+  var ID=getElementById("set-id").value
+  if (ID!=""){
+    peer = new Peer(ID,{
+      key: 'c2ad39ff-ed02-41e1-b1f1-c918871c1f28',
+      debug: 3
+    });
+  }else{
+    peer = new Peer({
+      key: 'c2ad39ff-ed02-41e1-b1f1-c918871c1f28',
+      debug: 3
+    });
+  }
 }
 
 document.getElementById('url').onclick = function() {
