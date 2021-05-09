@@ -35,12 +35,14 @@ document.getElementById('start').onclick = function() {
       debug: 3
     });
   }
+  peer.on('open', () => {
+    document.getElementById('my-id').textContent = peer.id;
+  });
   peer.on('call', mediaConnection => {
     mediaConnection.answer(localStream, {videoBandwidth: 14000, audioBandwidth: 4000});
     setEventListener(mediaConnection);
   });
   console.log(peer.id)
-  document.getElementById('my-id').textContent = peer.id;
 }
 
 document.getElementById('url').onclick = function() {
