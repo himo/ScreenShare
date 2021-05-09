@@ -34,6 +34,10 @@ document.getElementById('start').onclick = function() {
       debug: 3
     });
   }
+  peer.on('call', mediaConnection => {
+    mediaConnection.answer(localStream, {videoBandwidth: 14000, audioBandwidth: 4000});
+    setEventListener(mediaConnection);
+  });
 }
 
 document.getElementById('url').onclick = function() {
@@ -46,11 +50,6 @@ function gotLocalMediaStream(mediaStream) {
   localStream = mediaStream;
   localVideo.srcObject = mediaStream;
 }
-
-peer.on('call', mediaConnection => {
-  mediaConnection.answer(localStream, {videoBandwidth: 14000, audioBandwidth: 4000});
-  setEventListener(mediaConnection);
-});
 
 function handleLocalMediaStreamError(error) {
   console.log("navigator.getUserMedia error: ", error);
