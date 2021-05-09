@@ -23,11 +23,13 @@ document.getElementById('start').onclick = function() {
   .catch(handleLocalMediaStreamError);
   ID=document.getElementById("set-id").value
   if (ID!=""){
+    console.log("IDがセットされている")
     peer = new Peer(ID,{
       key: 'c2ad39ff-ed02-41e1-b1f1-c918871c1f28',
       debug: 3
     });
   }else{
+    console.log("IDがセットされていない")
     peer = new Peer({
       key: 'c2ad39ff-ed02-41e1-b1f1-c918871c1f28',
       debug: 3
@@ -37,6 +39,7 @@ document.getElementById('start').onclick = function() {
     mediaConnection.answer(localStream, {videoBandwidth: 14000, audioBandwidth: 4000});
     setEventListener(mediaConnection);
   });
+  console.log(peer.id)
   document.getElementById('my-id').textContent = peer.id;
 }
 
