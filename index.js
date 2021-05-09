@@ -22,7 +22,6 @@ document.getElementById('start').onclick = function() {
   .then(gotLocalMediaStream)
   .catch(handleLocalMediaStreamError);
   ID=document.getElementById("set-id").value
-  document.getElementById('my-id').textContent = peer.id;
   if (ID!=""){
     peer = new Peer(ID,{
       key: 'c2ad39ff-ed02-41e1-b1f1-c918871c1f28',
@@ -38,6 +37,7 @@ document.getElementById('start').onclick = function() {
     mediaConnection.answer(localStream, {videoBandwidth: 14000, audioBandwidth: 4000});
     setEventListener(mediaConnection);
   });
+  document.getElementById('my-id').textContent = peer.id;
 }
 
 document.getElementById('url').onclick = function() {
