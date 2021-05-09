@@ -3,9 +3,9 @@ let localStream;
 var peer;
 var ID
 
-peer.on('open', () => {
+/*peer.on('open', () => {
   document.getElementById('my-id').textContent = peer.id;
-});
+});*/
 
 const mediaStreamConstraints = {
   audio: {
