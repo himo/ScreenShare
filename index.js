@@ -21,7 +21,7 @@ document.getElementById('start').onclick = function() {
   .getDisplayMedia(mediaStreamConstraints)
   .then(gotLocalMediaStream)
   .catch(handleLocalMediaStreamError);
-  ID=getElementById("set-id").value
+  ID=document.getElementById("set-id").value
   document.getElementById('my-id').textContent = peer.id;
   if (ID!=""){
     peer = new Peer(ID,{
