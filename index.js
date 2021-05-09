@@ -37,7 +37,7 @@ document.getElementById('start').onclick = function() {
     mediaConnection.answer(localStream, {videoBandwidth: 14000, audioBandwidth: 4000});
     setEventListener(mediaConnection);
   });
-  document.getElementById('my-id').textContent = /*peer.id*/"wwwwww";
+  document.getElementById('my-id').textContent = peer.id;
 }
 
 document.getElementById('url').onclick = function() {
