@@ -14,8 +14,8 @@ const mediaStreamConstraints = {
         channelCount: 2
   },
   video: {
-    width: 1280,
-    height: 720, 
+    //width: 1280,
+    //height: 720, 
     "frameRate": {"max": 60}
   } 
 };
