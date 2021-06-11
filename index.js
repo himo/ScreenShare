@@ -13,7 +13,11 @@ const mediaStreamConstraints = {
         autoGainControl: false,
         channelCount: 2
   },
-  video: {"frameRate": {"max": 60}} 
+  video: {
+    width: 560,
+    height: 315, 
+    "frameRate": {"max": 60}
+  } 
 };
 
 document.getElementById('start').onclick = function() {
