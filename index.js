@@ -47,7 +47,7 @@ document.getElementById('start').onclick = function() {
     mediaConnection.answer(localStream, {videoBandwidth: 14000, audioBandwidth: 4000});
     setEventListener(mediaConnection);
   });
-  navigator.clipboard.writeText("http://150.147.198.206/screen/receive?id="+peer.id);
+  navigator.clipboard.writeText("https://himo.github.io/ScreenShare/receive?id="+peer.id);
   console.log(peer.id)
   document.getElementById('my-id').style.display ="none"
   document.getElementById('set-id-txt').style.display ="none"
