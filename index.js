@@ -57,7 +57,7 @@ document.getElementById('start').onclick = function() {
 }
 
 document.getElementById('url').onclick = function() {
-  navigator.clipboard.writeText("http://150.147.198.206/screen/receive?id="+peer.id);
+  navigator.clipboard.writeText("https://himo.github.io/ScreenShare/receive?id="+peer.id);
 }
 
 const localVideo = document.querySelector("video");
